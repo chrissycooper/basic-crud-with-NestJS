@@ -1,5 +1,4 @@
-import { Controller, Get, Req, Post, Query, Param, Body, Put } from "@nestjs/common";
-import { Request } from "express";
+import { Controller, Get, Post, Query, Param, Body, Put, Delete } from "@nestjs/common";
 import { CreateCatDto } from "./dto/create-cat.dto";
 import { ListAllEntities } from "./dto/list-all-entities.dto";
 import { UpdateCatDto } from "./dto/update-cat.dto";
@@ -25,6 +24,11 @@ export class CatsController {
   @Put(':id')
   update(@Param('id') id: string, @Body() updateCatDto: UpdateCatDto) {
     return `This action updates a #${id} cat.`;
+  }
+
+  @Delete(':id')
+  remove(@Param('id') id: string) {
+    return `this action removes a #${id} cat.`;
   }
 
 }
