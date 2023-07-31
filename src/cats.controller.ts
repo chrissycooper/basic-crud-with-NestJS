@@ -1,7 +1,8 @@
-import { Controller, Get, Req, Post, Query, Param, Body } from "@nestjs/common";
+import { Controller, Get, Req, Post, Query, Param, Body, Put } from "@nestjs/common";
 import { Request } from "express";
 import { CreateCatDto } from "./dto/create-cat.dto";
 import { ListAllEntities } from "./dto/list-all-entities.dto";
+import { UpdateCatDto } from "./dto/update-cat.dto";
 
 @Controller('cats')
 export class CatsController {
@@ -18,7 +19,12 @@ export class CatsController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return `this action returns cat #${id}`
+    return `this action returns cat #${id}`;
+  }
+
+  @Put(':id')
+  update(@Param('id') id: string, @Body() updateCatDto: UpdateCatDto) {
+    return `This action updates a #${id} cat.`;
   }
 
 }
